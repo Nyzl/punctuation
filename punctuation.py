@@ -20,6 +20,20 @@ trim = 100;
 font1size = 48;
 font2size = 72;
 
+#web scraping
+var = input("Enter a page: ")
+page = urlopen(var).read()
+
+soup = bs(page,'html.parser')
+title = soup.title.string
+title = title.strip()
+
+soup = soup.find("div", class_="articleContent")
+content = soup.get_text()
+
+bookname = title
+txt = content
+
 # number of symbols to be output on each line
 symbolsPerLine = 70;
 # and the number of lines
@@ -29,10 +43,7 @@ linesOfText = 70;
 # linesOfText = int(math.floor(len(punct)/symbolsPerLine));
 
 
-if (len(sys.argv) > 1):
-   bookname = sys.argv[1]
-else:
-   bookname = 'ulysses'
+
 
 file = open(bookname + '.txt','r')
 txt = file.read()
