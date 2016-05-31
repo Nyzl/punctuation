@@ -4,6 +4,9 @@ import sys
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
+from bs4 import BeautifulSoup as bs
+from urllib.request import urlsopen
+import re
 
 
 ## VARIABLES
