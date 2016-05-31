@@ -34,21 +34,6 @@ content = soup.get_text()
 bookname = title
 txt = content
 
-# number of symbols to be output on each line
-symbolsPerLine = 70;
-# and the number of lines
-linesOfText = 70;
-
-# symbolsPerLine = int(math.floor(math.sqrt(len(punct))));
-# linesOfText = int(math.floor(len(punct)/symbolsPerLine));
-
-
-
-
-file = open(bookname + '.txt','r')
-txt = file.read()
-file.close()
-
 include = set(string.punctuation)
 
 def getPunctuation(s):
@@ -60,6 +45,13 @@ punct = getPunctuation(txt);
 file = open(bookname + '-punct.txt','w')
 file.write(punct)
 file.close()
+
+size = int(math.floor(math.sqrt(len(punct))))
+symbolsPerLine = size
+linesOfText = size
+
+canvasHeight = size * 100
+canvasWidth = size * 100
 
 deltaW = (canvasWidth - trim*2)/symbolsPerLine
 deltaH = (canvasHeight - trim*2)/linesOfText
@@ -100,5 +92,7 @@ for ii in range(linesOfText):
          draw.text((trim + jj*deltaW,trim + ii*deltaH), symb,fill="green",font=font2)
 
 img.save(bookname + '.png')
+
+f = Image.open(bookname + '.png').show()
 
 print(len(punct))
