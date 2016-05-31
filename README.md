@@ -5,5 +5,4 @@ Dependancies
 BeautifulSoup4
 !pip install beautifulsoup4
 
-Command-line use is python punctation.py FILENAME.txt
-Outputs FILENAME.png
+
